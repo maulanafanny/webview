@@ -1,28 +1,24 @@
-// Copyright 2018 The Flutter team. All rights reserved.
-// Use of this source code is governed by a BSD-style license that can be
-// found in the LICENSE file.
-
 import 'package:flutter/material.dart';
+import 'package:flutter_webview_plugin/flutter_webview_plugin.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp( MyApp() );
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+  const MyApp({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Welcome to Flutter',
-      home: Scaffold(
-        appBar: AppBar(
-          title: const Text('Welcome to Flutter'),
+      routes: {
+        "/": (_) => WebviewScaffold(
+          url: "https://www.facebook.com",
+          appBar: AppBar(
+            title: const Text("Widget webview"),
+          ),
         ),
-        body: const Center(
-          child: Text('Fanny Maulana Rizky'),
-        ),
-      ),
+      },
     );
   }
 }
