@@ -82,6 +82,7 @@ class WebViewExampleState extends State<WebViewExample> {
       onWillPop: _onWillPop,
       child: MaterialApp(
         title: 'Test App Webview',
+        debugShowCheckedModeBanner: false,
         home: Scaffold(
           appBar: AppBar(
             title: const Text('Maulanafanny GitHub Profile'),
