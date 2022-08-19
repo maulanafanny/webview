@@ -1,9 +1,9 @@
 import 'dart:developer';
-
-import 'package:flutter/material.dart';
 import 'dart:io';
 
 import 'package:webview_flutter/webview_flutter.dart';
+import 'package:flutter/material.dart';
+
 import 'SideBar.dart';
 
 void main() {
@@ -20,6 +20,7 @@ class WebViewExample extends StatefulWidget {
 class WebViewExampleState extends State<WebViewExample> {
   late WebViewController controller;
   bool isLoading = true;
+  int _selectedIndex = 0;
 
   @override
   void initState() {
@@ -27,8 +28,6 @@ class WebViewExampleState extends State<WebViewExample> {
     // Enable virtual display.
     if (Platform.isAndroid) WebView.platform = AndroidWebView();
   }
-
-  int _selectedIndex = 0;
 
   void _hideProfile() {
     controller.runJavascript(
@@ -44,6 +43,10 @@ class WebViewExampleState extends State<WebViewExample> {
         "document.querySelectorAll('.Layout-main > .UnderlineNav')[1].classList.remove('d-block')");
     controller.runJavascript(
         "document.querySelectorAll('.Layout-main > .UnderlineNav')[1].style.display = 'none'");
+    controller.runJavascript(
+        "document.querySelectorAll('.Layout-main > .UnderlineNav')[1].style.display = 'none'");
+    controller.runJavascript(
+        "document.querySelector('.vcard-names-container.is-stuck .vcard-names').style.opacity = '1'");
   }
 
   void _onItemTapped(int index) {
@@ -99,8 +102,7 @@ class WebViewExampleState extends State<WebViewExample> {
               onWebViewCreated: (controller) {
                 this.controller = controller;
               },
-              onProgress: (progress) {},
-              onPageFinished: (url) {
+              onPageFinished: (url) async {
                 _hideElement();
                 if (url != 'https://github.com/maulanafanny') {
                   _hideProfile();
