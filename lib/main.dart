@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'dart:io';
 
 import 'package:webview_flutter/webview_flutter.dart';
+import 'SideBar.dart';
 
 void main() {
   runApp(const WebViewExample());
@@ -34,6 +35,7 @@ class WebViewExampleState extends State<WebViewExample> {
 
   void _hideElement() {
     controller.runJavascript("document.getElementsByTagName('footer')[0].style.display = 'none'");
+    controller.runJavascript("document.getElementsByTagName('header')[0].style.display = 'none'");
     controller.runJavascript("document.querySelectorAll('.Layout-main > .UnderlineNav')[1].classList.remove('d-block')");
     controller.runJavascript("document.querySelectorAll('.Layout-main > .UnderlineNav')[1].style.display = 'none'");
   }
@@ -73,7 +75,7 @@ class WebViewExampleState extends State<WebViewExample> {
       home: Scaffold(
         appBar: AppBar(
           title: const Text('Maulanafanny GitHub Profile'),
-          backgroundColor: Colors.red,
+          backgroundColor: const Color.fromARGB(255, 36, 41, 47),
         ),
         body: WillPopScope(
           onWillPop: () async {
@@ -116,12 +118,7 @@ class WebViewExampleState extends State<WebViewExample> {
           currentIndex: _selectedIndex,
           onTap: _onItemTapped,
         ),
-        drawer: Drawer(
-          backgroundColor: Colors.white,
-          child: Container(
-            padding: const EdgeInsets.fromLTRB(30, 70, 0, 0),
-          ),
-        ),
+        drawer: const SideBar(),
       ),
     );
   }
