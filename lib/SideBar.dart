@@ -1,5 +1,7 @@
 // ignore_for_file: file_names
 
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 
 class SideBar extends StatelessWidget {
@@ -88,7 +90,7 @@ class SideBar extends StatelessWidget {
             leading: const Icon(Icons.exit_to_app),
             title: const Text('Exit'),
             // ignore: avoid_returning_null_for_void
-            onTap: () => null,
+            onTap: () => exit(0),
           ),
         ],
       ),

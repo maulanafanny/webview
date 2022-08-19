@@ -19,6 +19,7 @@ class WebViewExample extends StatefulWidget {
 
 class WebViewExampleState extends State<WebViewExample> {
   late WebViewController controller;
+  bool isLoading = true;
 
   @override
   void initState() {
@@ -30,14 +31,19 @@ class WebViewExampleState extends State<WebViewExample> {
   int _selectedIndex = 0;
 
   void _hideProfile() {
-    controller.runJavascript("document.querySelectorAll('.Layout-sidebar')[1].style.display = 'none'");
+    controller.runJavascript(
+        "document.querySelectorAll('.Layout-sidebar')[1].style.display = 'none'");
   }
 
   void _hideElement() {
-    controller.runJavascript("document.getElementsByTagName('footer')[0].style.display = 'none'");
-    controller.runJavascript("document.getElementsByTagName('header')[0].style.display = 'none'");
-    controller.runJavascript("document.querySelectorAll('.Layout-main > .UnderlineNav')[1].classList.remove('d-block')");
-    controller.runJavascript("document.querySelectorAll('.Layout-main > .UnderlineNav')[1].style.display = 'none'");
+    controller.runJavascript(
+        "document.getElementsByTagName('footer')[0].style.display = 'none'");
+    controller.runJavascript(
+        "document.getElementsByTagName('header')[0].style.display = 'none'");
+    controller.runJavascript(
+        "document.querySelectorAll('.Layout-main > .UnderlineNav')[1].classList.remove('d-block')");
+    controller.runJavascript(
+        "document.querySelectorAll('.Layout-main > .UnderlineNav')[1].style.display = 'none'");
   }
 
   void _onItemTapped(int index) {
@@ -86,19 +92,31 @@ class WebViewExampleState extends State<WebViewExample> {
               return true;
             }
           },
-          child: WebView(
-            initialUrl: 'https://github.com/maulanafanny',
-            javascriptMode: JavascriptMode.unrestricted,
-            onWebViewCreated: (controller) {
-              this.controller = controller;
-            },
-            onPageFinished: (url) {
-              _hideElement();
-              if (url != 'https://github.com/maulanafanny') {
-                _hideProfile();
-              }
-            },
-          ),
+          child: Stack(children: [
+            WebView(
+              initialUrl: 'https://github.com/maulanafanny',
+              javascriptMode: JavascriptMode.unrestricted,
+              onWebViewCreated: (controller) {
+                this.controller = controller;
+              },
+              onProgress: (progress) {},
+              onPageFinished: (url) {
+                _hideElement();
+                if (url != 'https://github.com/maulanafanny') {
+                  _hideProfile();
+                }
+                setState(() {
+                  isLoading = false;
+                });
+              },
+            ),
+            Visibility(
+              visible: isLoading,
+              child: const Center(
+                child: CircularProgressIndicator(),
+              ),
+            )
+          ]),
         ),
         bottomNavigationBar: BottomNavigationBar(
           items: const <BottomNavigationBarItem>[
