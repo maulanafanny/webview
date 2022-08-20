@@ -22,6 +22,8 @@ class _HomePageState extends State<HomePage> {
     controller.runJavascript(
         "document.querySelectorAll('.Layout-main > .UnderlineNav')[1].style.display = 'none'");
     controller.runJavascript(
+        "document.querySelectorAll('.user-following-container')[2].style.display = 'none'");
+    controller.runJavascript(
         "document.querySelector('.vcard-names-container.is-stuck .vcard-names').style.opacity = '1'");
   }
 

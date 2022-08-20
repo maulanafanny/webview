@@ -31,6 +31,9 @@ class _MainPageState extends State<MainPage> {
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: currentIndex,
         onTap: onTap,
+        backgroundColor: const Color.fromARGB(255, 36, 41, 47),
+        unselectedItemColor: Colors.grey.withOpacity(0.5),
+        selectedItemColor: Colors.white,
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
             icon: Icon(Icons.home),
