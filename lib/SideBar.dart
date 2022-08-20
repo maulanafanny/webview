@@ -19,8 +19,8 @@ class SideBar extends StatelessWidget {
             accountEmail: const Text('maulanafanny38@gmail.com'),
             currentAccountPicture: CircleAvatar(
               child: ClipOval(
-                child: Image.network(
-                  'https://avatars.githubusercontent.com/u/82957902?v=4',
+                child: Image.asset(
+                  'assets/images/profile-pic.jpg',
                   width: 90,
                   height: 90,
                   fit: BoxFit.cover,
@@ -30,9 +30,7 @@ class SideBar extends StatelessWidget {
             decoration: const BoxDecoration(
                 color: Color.fromARGB(255, 22, 27, 34),
                 image: DecorationImage(
-                  image: NetworkImage(
-                    'https://media-exp1.licdn.com/dms/image/C4E16AQE4m5tabHhJZw/profile-displaybackgroundimage-shrink_350_1400/0/1656597459188?e=1666224000&v=beta&t=EQB_jtp_2tW2S42Ftnj05W20-FdarH-FlFORqlPiDnA',
-                  ),
+                  image: AssetImage('assets/images/background-pic.jpg'),
                   fit: BoxFit.cover,
                 )),
           ),
