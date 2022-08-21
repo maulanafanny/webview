@@ -13,16 +13,15 @@ class _StarsPageState extends State<StarsPage> {
   bool isLoading = true;
 
   void _hideElement() {
-    controller.runJavascript(
-        "document.getElementsByTagName('footer')[0].style.display = 'none'");
-    controller.runJavascript(
-        "document.getElementsByTagName('header')[0].style.display = 'none'");
-    controller.runJavascript(
-        "document.querySelectorAll('.Layout-main > .UnderlineNav')[1].classList.remove('d-block')");
-    controller.runJavascript(
-        "document.querySelectorAll('.Layout-main > .UnderlineNav')[1].style.display = 'none'");
-    controller.runJavascript(
-        "document.querySelectorAll('.Layout-sidebar')[1].style.display = 'none'");
+    const List<String> javascriptToExecute = [
+      "document.getElementsByTagName('footer')[0].hidden = true",
+      "document.getElementsByTagName('header')[0].hidden = true",
+      "document.querySelectorAll('.Layout-main > .UnderlineNav')[1].hidden = true",
+      "document.querySelectorAll('.Layout-sidebar')[1].hidden = true"
+    ];
+    for (final js in javascriptToExecute) {
+      controller.runJavascript(js);
+    }
   }
 
   @override

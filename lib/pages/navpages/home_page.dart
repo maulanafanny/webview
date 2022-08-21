@@ -13,18 +13,16 @@ class _HomePageState extends State<HomePage> {
   bool isLoading = true;
 
   void _hideElement() {
-    controller.runJavascript(
-        "document.getElementsByTagName('header')[0].style.display = 'none'");
-    controller.runJavascript(
-        "document.getElementsByTagName('footer')[0].style.display = 'none'");
-    controller.runJavascript(
-        "document.querySelectorAll('.Layout-main > .UnderlineNav')[1].classList.remove('d-block')");
-    controller.runJavascript(
-        "document.querySelectorAll('.Layout-main > .UnderlineNav')[1].style.display = 'none'");
-    controller.runJavascript(
-        "document.querySelectorAll('.user-following-container')[2].style.display = 'none'");
-    controller.runJavascript(
-        "document.querySelector('.vcard-names-container.is-stuck .vcard-names').style.opacity = '1'");
+    const List<String> javascriptToExecute = [
+      "document.getElementsByTagName('header')[0].hidden = true",
+      "document.getElementsByTagName('footer')[0].hidden = true",
+      "document.querySelectorAll('.Layout-main > .UnderlineNav')[1].hidden = true",
+      "document.querySelectorAll('.user-following-container')[2].hidden = true",
+      "document.querySelector('.vcard-names-container.is-stuck .vcard-names').style.opacity = '1'"
+    ];
+    for (final js in javascriptToExecute) {
+      controller.runJavascript(js);
+    }
   }
 
   @override
@@ -47,6 +45,7 @@ class _HomePageState extends State<HomePage> {
           },
           onPageFinished: (url) async {
             _hideElement();
+            // await Future.delayed(const Duration(seconds: 3));
             setState(() {
               isLoading = false;
             });
