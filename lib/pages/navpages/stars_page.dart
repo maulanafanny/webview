@@ -17,7 +17,8 @@ class _StarsPageState extends State<StarsPage> {
       "document.getElementsByTagName('footer')[0].hidden = true",
       "document.getElementsByTagName('header')[0].hidden = true",
       "document.querySelectorAll('.Layout-main > .UnderlineNav')[1].hidden = true",
-      "document.querySelectorAll('.Layout-sidebar')[1].hidden = true"
+      "document.querySelectorAll('.Layout-sidebar')[1].hidden = true",
+      "document.documentElement.setAttribute('data-color-mode', 'dark')"
     ];
     for (final js in javascriptToExecute) {
       controller.runJavascript(js);
@@ -38,6 +39,7 @@ class _StarsPageState extends State<StarsPage> {
       child: Stack(children: [
         WebView(
           initialUrl: 'https://github.com/maulanafanny?tab=stars',
+          backgroundColor: const Color.fromARGB(255, 36, 41, 47),
           javascriptMode: JavascriptMode.unrestricted,
           onWebViewCreated: (controller) {
             this.controller = controller;
@@ -52,7 +54,7 @@ class _StarsPageState extends State<StarsPage> {
         Visibility(
           visible: isLoading,
           child: const Center(
-            child: CircularProgressIndicator(),
+            child: CircularProgressIndicator(color: Colors.white),
           ),
         )
       ]),

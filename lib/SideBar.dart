@@ -10,7 +10,7 @@ class SideBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Drawer(
-      backgroundColor: Colors.white,
+      backgroundColor: const Color.fromARGB(255, 36, 41, 47),
       child: ListView(
         padding: EdgeInsets.zero,
         children: [
@@ -35,58 +35,64 @@ class SideBar extends StatelessWidget {
                 )),
           ),
           ListTile(
-            leading: const Icon(Icons.apps),
-            title: const Text('Product'),
+            leading: const Icon(Icons.apps, color: Colors.white70),
+            title: const Text(
+              'Product',
+              style: TextStyle(color: Colors.white70),
+            ),
             // ignore: avoid_returning_null_for_void
             onTap: () => null,
           ),
           ListTile(
-            leading: const Icon(Icons.people),
-            title: const Text('Team'),
+            leading: const Icon(Icons.people, color: Colors.white70),
+            title: const Text('Team', style: TextStyle(color: Colors.white70)),
             // ignore: avoid_returning_null_for_void
             onTap: () => null,
           ),
           ListTile(
-            leading: const Icon(Icons.shop),
-            title: const Text('Enterprise'),
+            leading: const Icon(Icons.shop, color: Colors.white70),
+            title:
+                const Text('Enterprise', style: TextStyle(color: Colors.white70)),
             // ignore: avoid_returning_null_for_void
             onTap: () => null,
           ),
           ListTile(
-            leading: const Icon(Icons.explore),
-            title: const Text('Explore'),
+            leading: const Icon(Icons.explore, color: Colors.white70),
+            title: const Text('Explore', style: TextStyle(color: Colors.white70)),
             // ignore: avoid_returning_null_for_void
             onTap: () => null,
           ),
           ListTile(
-            leading: const Icon(Icons.shop),
-            title: const Text('Marketplace'),
+            leading: const Icon(Icons.shop, color: Colors.white70),
+            title: const Text('Marketplace',
+                style: TextStyle(color: Colors.white70)),
             // ignore: avoid_returning_null_for_void
             onTap: () => null,
           ),
           ListTile(
-            leading: const Icon(Icons.price_check),
-            title: const Text('Pricing'),
+            leading: const Icon(Icons.price_check, color: Colors.white70),
+            title: const Text('Pricing', style: TextStyle(color: Colors.white70)),
             // ignore: avoid_returning_null_for_void
             onTap: () => null,
           ),
-          const Divider(),
+          const Divider(color: Colors.white70),
           ListTile(
-            leading: const Icon(Icons.settings),
-            title: const Text('Settings'),
+            leading: const Icon(Icons.settings, color: Colors.white70),
+            title:
+                const Text('Settings', style: TextStyle(color: Colors.white70)),
             // ignore: avoid_returning_null_for_void
             onTap: () => null,
           ),
           ListTile(
-            leading: const Icon(Icons.help),
-            title: const Text('Help'),
+            leading: const Icon(Icons.help, color: Colors.white70),
+            title: const Text('Help', style: TextStyle(color: Colors.white70)),
             // ignore: avoid_returning_null_for_void
             onTap: () => null,
           ),
-          const Divider(),
+          const Divider(color: Colors.white70),
           ListTile(
-            leading: const Icon(Icons.exit_to_app),
-            title: const Text('Exit'),
+            leading: const Icon(Icons.exit_to_app, color: Colors.white70),
+            title: const Text('Exit', style: TextStyle(color: Colors.white70)),
             // ignore: avoid_returning_null_for_void
             onTap: () => exit(0),
           ),

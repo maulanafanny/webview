@@ -35,7 +35,7 @@ class WebViewExampleState extends State<WebViewExample> {
       debugShowCheckedModeBanner: false,
       home: Scaffold(
         appBar: AppBar(
-          title: const Text('Maulanafanny\'s GitHub Profile'),
+          title: const Text('Your GitHub Profile'),
           backgroundColor: const Color.fromARGB(255, 36, 41, 47),
         ),
         body: const MainPage(),

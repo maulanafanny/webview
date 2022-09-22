@@ -18,7 +18,8 @@ class _HomePageState extends State<HomePage> {
       "document.getElementsByTagName('footer')[0].hidden = true",
       "document.querySelectorAll('.Layout-main > .UnderlineNav')[1].hidden = true",
       "document.querySelectorAll('.user-following-container')[2].hidden = true",
-      "document.querySelector('.vcard-names-container.is-stuck .vcard-names').style.opacity = '1'"
+      "document.querySelector('.vcard-names-container.is-stuck .vcard-names').style.opacity = '1'",
+      "document.documentElement.setAttribute('data-color-mode', 'dark')"
     ];
     for (final js in javascriptToExecute) {
       controller.runJavascript(js);
@@ -39,13 +40,13 @@ class _HomePageState extends State<HomePage> {
       child: Stack(children: [
         WebView(
           initialUrl: 'https://github.com/maulanafanny',
+          backgroundColor: const Color.fromARGB(255, 36, 41, 47),
           javascriptMode: JavascriptMode.unrestricted,
           onWebViewCreated: (controller) {
             this.controller = controller;
           },
           onPageFinished: (url) async {
             _hideElement();
-            // await Future.delayed(const Duration(seconds: 3));
             setState(() {
               isLoading = false;
             });
@@ -54,7 +55,7 @@ class _HomePageState extends State<HomePage> {
         Visibility(
           visible: isLoading,
           child: const Center(
-            child: CircularProgressIndicator(),
+            child: CircularProgressIndicator(color: Colors.white,),
           ),
         )
       ]),
